@@ -18,4 +18,4 @@ export function ProceedToCheckout({ color }: { color: string }) {
       }}
     />
   );
-}
+} 

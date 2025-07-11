@@ -1,11 +1,10 @@
 import { cookies, headers } from 'next/headers';
-import { dedupe } from 'flags/next';
 import { nanoid } from 'nanoid';
 
 /**
  * Reads the cart id from the cookie or returns a new cart id
  */
-export const getCartId = dedupe(async () => {
+export const getCartId = async () => {
   const cookiesStore = await cookies();
   const header = await headers();
 
@@ -18,4 +17,4 @@ export const getCartId = dedupe(async () => {
   const cartId = cookiesStore.get('cart-id')?.value;
   if (!cartId) return { value: nanoid(), isFresh: true };
   return { value: cartId, isFresh: false };
-});
+};

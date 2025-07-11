@@ -4,11 +4,13 @@ import type { Metadata } from 'next';
 import { Toaster } from 'sonner';
 
 import './globals.css';
-import { ExamplesBanner } from '@/components/banners/examples-banner';
+import { FreeDelivery } from '@/app/free-delivery';
+import { Footer } from '@/components/footer';
+import { Navigation } from '@/components/navigation';
 
 export const metadata: Metadata = {
-  title: 'Flags SDK Example',
-  description: 'A Flags SDK example for Ecommerce',
+  title: 'Shirt Shop Example',
+  description: 'A shirt shop example for Ecommerce',
 };
 
 export default function RootLayout({
@@ -16,11 +18,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const showFreeDeliveryBanner = true;
+
   return (
     <html lang="en">
       <body className="antialiased">
-        <ExamplesBanner />
-        {children}
+        <div className="bg-white">
+          <FreeDelivery show={showFreeDeliveryBanner} />
+          <Navigation />
+          {children}
+          <Footer />
+        </div>
         <Toaster />
         <Analytics />
         <VercelToolbar />
