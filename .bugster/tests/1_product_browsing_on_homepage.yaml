@@ -1,0 +1,11 @@
+name: Product browsing on homepage
+page: /
+page_path: app/page.tsx
+task: Verify users can view product details on the homepage
+steps:
+- Navigate to the homepage
+- Verify product images are visible in the gallery
+- Verify product name and price are displayed
+- Verify product description is visible
+expected_result: Product details including images, name, price, and description are
+  displayed correctly

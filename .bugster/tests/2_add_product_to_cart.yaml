@@ -1,0 +1,11 @@
+name: Add product to cart
+page: /
+page_path: app/page.tsx
+task: Verify users can add a product to their cart
+steps:
+- Navigate to the homepage
+- Select a color option
+- Select a size option
+- Click the 'Add to cart' button
+- Verify success notification appears
+expected_result: Product is added to cart and success notification appears

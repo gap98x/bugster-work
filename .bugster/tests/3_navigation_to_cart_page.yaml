@@ -1,0 +1,10 @@
+name: Navigation to cart page
+page: /
+page_path: app/page.tsx
+task: Verify users can navigate to cart page from the navigation menu
+steps:
+- Navigate to the homepage
+- Click on the cart icon in the navigation bar
+- Verify redirect to cart page
+- Verify the URL is /cart
+expected_result: User is redirected to the cart page

@@ -1,0 +1,10 @@
+name: View cart contents
+page: /cart
+page_path: app/cart/page.tsx
+task: Verify users can view items in their shopping cart
+steps:
+- Add a product to cart from the homepage
+- Navigate to the cart page
+- Verify product appears in the cart list
+- Verify product details (name, color, size, price) are correct
+expected_result: Cart page displays all added items with correct details

@@ -1,6 +1,7 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
+import { cookies } from 'next/headers';
 import { Cart, CartItem } from '@/components/utils/cart-types';
 import { getCartId } from './get-cart-id';
 
@@ -11,6 +12,17 @@ const BACKEND_URL =
 
 export async function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export async function setCartIdCookie(cartId: string) {
+  const cookiesStore = await cookies();
+  cookiesStore.set('cart-id', cartId, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: 60 * 60 * 24 * 30, // 30 days
+    path: '/',
+  });
 }
 
 export async function getCart(): Promise<Cart> {
@@ -25,6 +37,12 @@ export async function getCart(): Promise<Cart> {
 
 export async function addToCart(item: CartItem) {
   const cartId = await getCartId();
+  
+  // If this is a fresh cart ID, set the cookie
+  if (cartId.isFresh) {
+    await setCartIdCookie(cartId.value);
+  }
+  
   await fetch(`${BACKEND_URL}/api/cart/${cartId.value}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
