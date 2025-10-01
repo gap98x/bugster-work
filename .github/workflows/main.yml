@@ -1,0 +1,19 @@
+name: Deploy Preview
+
+on:
+  pull_request:
+
+jobs:
+  # Add bugster integration after your deployment job
+  trigger-bugster:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Notify Bugster (success deployment)
+        uses: Bugsterapp/bugster-action@v1
+        with:
+          bugster_api_key: ${{ secrets.BUGSTER_API_KEY }}
+          organization_id: "org_33QJRkeL8rpgws5aSOta7qtfLwI"
+          project_id: "bugster-nextjs-example-1759320855"
+          environment_url: "https://bugster-work.netlify.app"
