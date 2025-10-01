@@ -4,14 +4,14 @@
 
 # Project Information
 project_name: bugster-nextjs-example
-project_id: bugster-nextjs-example-1759318817
+project_id: bugster-nextjs-example-1759320855
 base_url: "http://localhost:3000"
 
 # Project Authentication
-credentials:
-  - id: admin
-    username: ${BUGSTER_USERNAME}
-    password: ${BUGSTER_PASSWORD}
+# credentials:
+#   - id: admin
+#     username: ${BUGSTER_USERNAME}
+#     password: ${BUGSTER_PASSWORD}
 
 # Vercel Configuration
 # You can create the Vercel Protection Bypass Secret for Automation in this link:
